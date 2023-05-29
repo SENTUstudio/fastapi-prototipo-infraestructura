@@ -1,4 +1,5 @@
 import secrets
+import os
 from typing import Any, Dict, List, Optional, Union
 
 from pydantic import AnyHttpUrl, BaseSettings, EmailStr, HttpUrl, PostgresDsn, validator
@@ -78,8 +79,10 @@ class Settings(BaseSettings):
         )
 
     EMAIL_TEST_USER: EmailStr = "test@example.com"  # type: ignore
-    FIRST_SUPERUSER: str
-    FIRST_SUPERUSER_PASSWORD: str
+    # FIRST_SUPERUSER: EmailStr = "anchastreluis@gmail.com"
+    # FIRST_SUPERUSER_PASSWORD: str = "1234"
+    FIRST_SUPERUSER: EmailStr = os.environ.get("FIRST_SUPERUSER", "test@app.com")
+    FIRST_SUPERUSER_PASSWORD: str = os.environ.get("FIRST_SUPERUSER_PASSWORD", "12345")
     USERS_OPEN_REGISTRATION: bool = False
 
     class Config:

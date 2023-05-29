@@ -32,9 +32,9 @@ services:
     ports:
       - "5050:5050"
 
-  flower:
-    ports:
-      - "5555:5555"
+  # flower:
+  #   ports:
+  #     - "5555:5555"
 
   backend:
     ports:
